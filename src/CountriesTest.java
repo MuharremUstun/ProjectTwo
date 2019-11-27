@@ -445,18 +445,18 @@ public class CountriesTest {
 
 
     @Test
-    public void middleCharater1() {
+    public void middleCharacter1() {
 
-        char i1 = c1.middleCharater("HeyDude");
+        char i1 = c1.middleCharacter("HeyDude");
 
         Assert.assertTrue(i1 == 'D');
 
     }
 
     @Test
-    public void middleCharater2() {
+    public void middleCharacter2() {
 
-        char i1 = c1.middleCharater("Cerry");
+        char i1 = c1.middleCharacter("Cerry");
 
         Assert.assertTrue(i1 == 'r');
 
@@ -464,18 +464,18 @@ public class CountriesTest {
 
 
     @Test
-    public void middleCharater3() {
+    public void middleCharacter3() {
 
-        char i1 = c1.middleCharater("Ring");
+        char i1 = c1.middleCharacter("Ring");
 
         Assert.assertTrue(i1 == '0');
 
     }
 
     @Test
-    public void dayoftheWeek1() {
+    public void dayOfTheWeek1() {
 
-        String i1 = c1.dayoftheWeek(1);
+        String i1 = c1.dayOfTheWeek(1);
 
         Assert.assertTrue(i1.equals("Monday"));
 
@@ -483,9 +483,9 @@ public class CountriesTest {
 
 
     @Test
-    public void dayoftheWeek2() {
+    public void dayOfTheWeek2() {
 
-        String i1 = c1.dayoftheWeek(5);
+        String i1 = c1.dayOfTheWeek(5);
 
         Assert.assertTrue(i1.equals("Friday"));
 
@@ -493,18 +493,18 @@ public class CountriesTest {
 
 
     @Test
-    public void dayoftheWeek3() {
+    public void dayOfTheWeek3() {
 
-        String i1 = c1.dayoftheWeek(0);
+        String i1 = c1.dayOfTheWeek(0);
 
         Assert.assertTrue(i1.equals("this is not a expected input"));
 
     }
 
     @Test
-    public void dayoftheWeek4() {
+    public void dayOfTheWeek4() {
 
-        String i1 = c1.dayoftheWeek(12);
+        String i1 = c1.dayOfTheWeek(12);
 
         Assert.assertTrue(i1.equals("this is not a expected input"));
 
