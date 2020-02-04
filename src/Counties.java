@@ -1,35 +1,48 @@
 import org.junit.Test;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 
-public class Counties {
+import static java.util.Collections.sort;
 
+public class Counties {
 
 
     // if CountThis String in the myCounties ArrayList then return how many of CountThis string in the myCounties
 //              if CountThis is not in the myCountries then return -1
-    public int countCountry(ArrayList<String> myCountries, String CountThis){
 
-        int result = 0 ;
-
-        for(int i = 0 ; i<myCountries.size() ; i++) {
-
-
-            if(!myCountries.contains(CountThis)){
-
-                result =-1;
-
-            }else if(myCountries.get(i).equals(CountThis)){
-
-                result++;
-            }
-
+    public int countCountry(ArrayList<String> myCountries, String CountThis) {
+        int count = 0;
+        for (String myCountry : myCountries) {
+            if (myCountry.equals(CountThis)) count++;
         }
-
-        return result;
+        if (count == 0) return -1;
+        else return count;
     }
+
+
+//    public int countCountry(ArrayList<String> myCountries, String CountThis){
+//
+//        int result = 0 ;
+//
+//        for(int i = 0 ; i<myCountries.size() ; i++) {
+//
+//
+//            if(!myCountries.contains(CountThis)){
+//
+//                result =-1;
+//
+//            }else if(myCountries.get(i).equals(CountThis)){
+//
+//                result++;
+//            }
+//
+//        }
+//
+//        return result;
+//    }
 
     /*sort the arraylist
 
@@ -38,14 +51,21 @@ public class Counties {
             result should be ====>>>   brazil england USA
 
      */
-    public ArrayList<String> sortArrayList(ArrayList<String> myCountries){
 
+    public ArrayList<String> sortArrayList(ArrayList<String> myCountries) {
         Collections.sort(myCountries);
-
         return myCountries;
-
-
     }
+
+
+//    public ArrayList<String> sortArrayList(ArrayList<String> myCountries){
+//
+//        sort(myCountries);
+//
+//        return myCountries;
+//
+//
+//    }
 
 /*
     Reverse the ArrayList
@@ -54,26 +74,30 @@ public class Counties {
 
     result should be =====>>>> brazil USA england
 
-
-
  */
 
-    public ArrayList<String> reverseTheList(ArrayList<String> myCountries){
-
-        ArrayList<String> reverse = new ArrayList<>();
-
-        System.out.println(myCountries);
-
-        for(int i = myCountries.size()-1 ; i>=0 ; i--){
-
-            reverse.add(myCountries.get(i));
-
-        }
-
-        return reverse;
-
-
+    public ArrayList<String> reverseArrayList(ArrayList<String> myCountries) {
+        Collections.reverse(myCountries);
+        return myCountries;
     }
+
+
+//    public ArrayList<String> reverseTheList(ArrayList<String> myCountries){
+//
+//        ArrayList<String> reverse = new ArrayList<>();
+//
+//        System.out.println(myCountries);
+//
+//        for(int i = myCountries.size()-1 ; i>=0 ; i--){
+//
+//            reverse.add(myCountries.get(i));
+//
+//        }
+//
+//        return reverse;
+//
+//
+//    }
 
     /*
 
@@ -93,48 +117,61 @@ public class Counties {
 
 
      */
-    public int getTotal(String myNumbers){
 
-        char[] myChar = myNumbers.toCharArray();
-
-        int total = 0 ;
-        for(int  i= 0 ; i<myChar.length ; i++){
-
-
-            if(myChar[i]%2==0){
-
-                String str = String.valueOf(myChar[i]);
-
-                int myeven = Integer.parseInt(str);
-
-                myeven = myeven*2;
-
-                total = total + myeven;
-
-            }else if(myChar[i]%2==1){
-
-                String str = String.valueOf(myChar[i]);
-
-                int myodd = Integer.parseInt(str);
-
-                myodd = myodd*-1;
-
-                total = total + myodd;
-
-            }
-
-
+    public int summation(String myNumbers) {
+        int sum = 0;
+        for (int i = 0; i < myNumbers.length(); i++) {
+            int digit = Integer.valueOf(myNumbers.substring(i, i + 1));
+            if (digit % 2 == 0) sum = sum + (2 * digit);
+            else sum = sum - digit;
         }
-
-
-        if(total == 0 ){
-
-            total = -1 ;
-        }
-        System.out.println(total);
-
-        return total;
+        if (sum == 0) return -1;
+        else return sum;
     }
+
+
+//    public int getTotal(String myNumbers) {
+//
+//        char[] myChar = myNumbers.toCharArray();
+//
+//        int total = 0;
+//        for (int i = 0; i < myChar.length; i++) {
+//
+//
+//            if (myChar[i] % 2 == 0) {
+//
+//                String str = String.valueOf(myChar[i]);
+//
+//                int myeven = Integer.parseInt(str);
+//
+//                myeven = myeven * 2;
+//
+//                total = total + myeven;
+//
+//            } else if (myChar[i] % 2 == 1) {
+//
+//                String str = String.valueOf(myChar[i]);
+//
+//                int myodd = Integer.parseInt(str);
+//
+//                myodd = myodd * -1;
+//
+//                total = total + myodd;
+//
+//            }
+//
+//
+//        }
+//
+//
+//        if (total == 0) {
+//
+//            total = -1;
+//        }
+//        System.out.println(total);
+//
+//        return total;
+//    }
 
 
 /*
@@ -155,19 +192,19 @@ public class Counties {
 
  */
 
-    public boolean isFirstArrayListContainsSecondArrayList(ArrayList<String> firstArray ,ArrayList<String> SecondAray){
+    public boolean isFirstArrayListContainsSecondArrayList(ArrayList<String> firstArray, ArrayList<String> SecondAray) {
 
         boolean result = false;
 
-        for(int i = 0 ; i < firstArray.size(); i++){
+        for (int i = 0; i < firstArray.size(); i++) {
 
-            for(int j = 0 ; j < SecondAray.size() ; j++){
+            for (int j = 0; j < SecondAray.size(); j++) {
 
-                if (firstArray.get(i).contains(SecondAray.get(j))){
+                if (firstArray.get(i).contains(SecondAray.get(j))) {
 
                     result = true;
                     break;
-                }else if(j==SecondAray.size()-1){
+                } else if (j == SecondAray.size() - 1) {
 
 
                     return false;
@@ -195,18 +232,18 @@ public class Counties {
 
      */
 
-    public ArrayList<String> replaceTheCountry(ArrayList<String> myCountries ,String firstCountry , String SecondCounry){
+    public ArrayList<String> replaceTheCountry(ArrayList<String> myCountries, String firstCountry, String SecondCounry) {
 
-        for(int i = 0 ; i< myCountries.size() ; i++){
+        for (int i = 0; i < myCountries.size(); i++) {
 
-            if (!myCountries.contains(firstCountry)){
+            if (!myCountries.contains(firstCountry)) {
 
-                myCountries.set(i,"-1");
+                myCountries.set(i, "-1");
 
-            }else if(myCountries.get(i).equals(firstCountry)){
+            } else if (myCountries.get(i).equals(firstCountry)) {
 
 
-                myCountries.set(i,SecondCounry);
+                myCountries.set(i, SecondCounry);
 
             }
 
@@ -226,29 +263,28 @@ public class Counties {
 
      */
 
-    public int smallestNumber(int i1 , int i2 ,int i3){
+    public int smallestNumber(int i1, int i2, int i3) {
 
-        int result =0;
+        int result = 0;
 
-        if(i1<=i2 && i1<=i3){
+        if (i1 <= i2 && i1 <= i3) {
 
-            result =i1;
-
-
-        }else if(i2<=i1 && i2<=i3){
-
-            result =i2;
+            result = i1;
 
 
-        }else if(i3<=i2 && i3<=i1){
+        } else if (i2 <= i1 && i2 <= i3) {
 
-            result =i3;
+            result = i2;
+
+
+        } else if (i3 <= i2 && i3 <= i1) {
+
+            result = i3;
 
         }
 
 
         return result;
-
 
 
     }
@@ -264,17 +300,17 @@ public class Counties {
         if the string length is even number return 0
 
      */
-    public char middleCharacter(String s1){
+    public char middleCharacter(String s1) {
 
-        char c1 =' ';
+        char c1 = ' ';
 
-        if(s1.length()%2==0){
+        if (s1.length() % 2 == 0) {
 
-            c1='0';
+            c1 = '0';
 
-        }else{
+        } else {
 
-            int mid=  s1.length()/2;
+            int mid = s1.length() / 2;
 
             c1 = s1.charAt(mid);
 
@@ -296,42 +332,42 @@ public class Counties {
 
      */
 
-    public String dayOfTheWeek(int num){
+    public String dayOfTheWeek(int num) {
 
-        String result =null;
+        String result = null;
 
-        if(num==1){
+        if (num == 1) {
 
             result = "Monday";
 
-        }else if(num==2){
+        } else if (num == 2) {
 
             result = "Tuesday";
 
-        }else if(num==3){
+        } else if (num == 3) {
 
             result = "Wednesday";
 
-        }else if(num==4){
+        } else if (num == 4) {
 
             result = "Tuesday";
 
-        }else if(num==5){
+        } else if (num == 5) {
 
             result = "Friday";
 
-        }else if(num==6){
+        } else if (num == 6) {
 
             result = "Saturday";
 
-        }else if(num==7){
+        } else if (num == 7) {
 
             result = "Sunday";
 
-        }else{
+        } else {
 
 
-            result ="this is not a expected input";
+            result = "this is not a expected input";
 
         }
 
@@ -339,8 +375,6 @@ public class Counties {
 
 
     }
-
-
 
 
 }
