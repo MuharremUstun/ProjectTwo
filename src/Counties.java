@@ -1,9 +1,7 @@
 import org.junit.Test;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
+import java.util.*;
 
 import static java.util.Collections.sort;
 
@@ -76,7 +74,7 @@ public class Counties {
 
  */
 
-    public ArrayList<String> reverseArrayList(ArrayList<String> myCountries) {
+    public ArrayList<String> reverseTheList(ArrayList<String> myCountries) {
         Collections.reverse(myCountries);
         return myCountries;
     }
@@ -118,7 +116,7 @@ public class Counties {
 
      */
 
-    public int summation(String myNumbers) {
+    public int getTotal(String myNumbers) {
         int sum = 0;
         for (int i = 0; i < myNumbers.length(); i++) {
             int digit = Integer.valueOf(myNumbers.substring(i, i + 1));
@@ -174,51 +172,58 @@ public class Counties {
 //    }
 
 
-/*
+    /*
 
-    if first array contains second array then result is true if not then false
+        if first array contains second array then result is true if not then false
 
-        first array =====>>> China Russia USA Mexico
-        Second array =====>>>>Mexico Russia USA China
+            first array =====>>> China Russia USA Mexico
+            Second array =====>>>>Mexico Russia USA China
 
-        result true
-
-
-        first array =====>>> China USA Mexico
-        Second array =====>>>>Mexico Russia USA China
-
-        return false
+            result true
 
 
- */
+            first array =====>>> China USA Mexico
+            Second array =====>>>>Mexico Russia USA China
 
-    public boolean isFirstArrayListContainsSecondArrayList(ArrayList<String> firstArray, ArrayList<String> SecondAray) {
-
-        boolean result = false;
-
-        for (int i = 0; i < firstArray.size(); i++) {
-
-            for (int j = 0; j < SecondAray.size(); j++) {
-
-                if (firstArray.get(i).contains(SecondAray.get(j))) {
-
-                    result = true;
-                    break;
-                } else if (j == SecondAray.size() - 1) {
+            return false
 
 
-                    return false;
-
-                }
-
-            }
-
-
-        }
-
-        return result;
-
+     */
+    public boolean isFirstArrayListContainsSecondArrayList(ArrayList<String> firstArray, ArrayList<String> secondArray) {
+//        Set<String> firstSet = new HashSet<>(firstArray);
+//        Set<String> secondSet = new HashSet<>(secondArray);
+        return secondArray.containsAll(firstArray);
     }
+
+//    public boolean isFirstArrayListContainsSecondArrayList(ArrayList<String> firstArray, ArrayList<String> SecondAray) {
+//
+//        boolean result = false;
+//
+//        for (int i = 0; i < firstArray.size(); i++) {
+//
+//            for (int j = 0; j < SecondAray.size(); j++) {
+//
+//                if (firstArray.get(i).contains(SecondAray.get(j))) {
+//
+//                    result = true;
+//                    break;
+//                } else if (j == SecondAray.size() - 1) {
+//
+//
+//                    return false;
+//
+//                }
+//
+//            }
+//
+//
+//        }
+//
+//        return result;
+//
+//    }
+
+
     /*
 
     if ArrayList myCountries have a firstCountry then replace it with a secondCountry
@@ -229,29 +234,46 @@ public class Counties {
 
                     result should be Brazil Canada Mexico Canada
 
-
      */
 
-    public ArrayList<String> replaceTheCountry(ArrayList<String> myCountries, String firstCountry, String SecondCounry) {
-
-        for (int i = 0; i < myCountries.size(); i++) {
-
-            if (!myCountries.contains(firstCountry)) {
-
+    public ArrayList<String> replaceTheCountry(ArrayList<String> myCountries, String firstCountry, String secondCountry) {
+        if (!myCountries.contains(firstCountry)) {
+            for (int i = 0; i < myCountries.size(); i++) {
                 myCountries.set(i, "-1");
-
-            } else if (myCountries.get(i).equals(firstCountry)) {
-
-
-                myCountries.set(i, SecondCounry);
-
             }
+        } else {
 
+            for (String myCountry : myCountries) {
+                if (myCountry.equals(firstCountry)) {
+                    int index = myCountries.indexOf(myCountry);
+                    myCountries.set(index, secondCountry);
+                }
+            }
         }
-
         return myCountries;
-
     }
+
+
+//    public ArrayList<String> replaceTheCountry(ArrayList<String> myCountries, String firstCountry, String SecondCounry) {
+//
+//        for (int i = 0; i < myCountries.size(); i++) {
+//
+//            if (!myCountries.contains(firstCountry)) {
+//
+//                myCountries.set(i, "-1");
+//
+//            } else if (myCountries.get(i).equals(firstCountry)) {
+//
+//
+//                myCountries.set(i, SecondCounry);
+//
+//            }
+//
+//        }
+//
+//        return myCountries;
+//
+//    }
 
 
     /*
@@ -263,31 +285,36 @@ public class Counties {
 
      */
 
-    public int smallestNumber(int i1, int i2, int i3) {
-
-        int result = 0;
-
-        if (i1 <= i2 && i1 <= i3) {
-
-            result = i1;
-
-
-        } else if (i2 <= i1 && i2 <= i3) {
-
-            result = i2;
-
-
-        } else if (i3 <= i2 && i3 <= i1) {
-
-            result = i3;
-
-        }
-
-
-        return result;
-
-
+    public int smallestNumber(int a, int b, int c) {
+        return Math.min(a, Math.min(b, c));
     }
+
+
+//    public int smallestNumber(int i1, int i2, int i3) {
+//
+//        int result = 0;
+//
+//        if (i1 <= i2 && i1 <= i3) {
+//
+//            result = i1;
+//
+//
+//        } else if (i2 <= i1 && i2 <= i3) {
+//
+//            result = i2;
+//
+//
+//        } else if (i3 <= i2 && i3 <= i1) {
+//
+//            result = i3;
+//
+//        }
+//
+//
+//        return result;
+//
+//
+//    }
 
     /*
     Create a method
@@ -300,25 +327,36 @@ public class Counties {
         if the string length is even number return 0
 
      */
-    public char middleCharacter(String s1) {
-
-        char c1 = ' ';
-
-        if (s1.length() % 2 == 0) {
-
-            c1 = '0';
-
-        } else {
-
-            int mid = s1.length() / 2;
-
-            c1 = s1.charAt(mid);
-
+    public char middleCharacter(String str) {
+        int len = str.length();
+        char midChr;
+        if (len % 2 == 0) return '0';
+        else {
+            midChr = str.charAt(len / 2);
+            return midChr;
         }
-
-        return c1;
-
     }
+
+
+//    public char middleCharacter(String s1) {
+//
+//        char c1 = ' ';
+//
+//        if (s1.length() % 2 == 0) {
+//
+//            c1 = '0';
+//
+//        } else {
+//
+//            int mid = s1.length() / 2;
+//
+//            c1 = s1.charAt(mid);
+//
+//        }
+//
+//        return c1;
+//
+//    }
 
     /*
      Create a method
@@ -331,50 +369,71 @@ public class Counties {
         if the number bigger then 7 then return -->> this is not a expected input
 
      */
-
-    public String dayOfTheWeek(int num) {
-
-        String result = null;
-
-        if (num == 1) {
-
-            result = "Monday";
-
-        } else if (num == 2) {
-
-            result = "Tuesday";
-
-        } else if (num == 3) {
-
-            result = "Wednesday";
-
-        } else if (num == 4) {
-
-            result = "Tuesday";
-
-        } else if (num == 5) {
-
-            result = "Friday";
-
-        } else if (num == 6) {
-
-            result = "Saturday";
-
-        } else if (num == 7) {
-
-            result = "Sunday";
-
-        } else {
-
-
-            result = "this is not a expected input";
-
+    public String dayOfTheWeek(int t) {
+        switch (t) {
+            case 1:
+                return "Monday";
+            case 2:
+                return "Tuesday";
+            case 3:
+                return "Wednesday";
+            case 4:
+                return "Thursday";
+            case 5:
+                return "Friday";
+            case 6:
+                return "Saturday";
+            case 7:
+                return "Sunday";
+            default:
+                return "this is not a expected input";
         }
-
-        return result;
-
-
     }
+
+
+//    public String dayOfTheWeek(int num) {
+//
+//        String result = null;
+//
+//        if (num == 1) {
+//
+//            result = "Monday";
+//
+//        } else if (num == 2) {
+//
+//            result = "Tuesday";
+//
+//        } else if (num == 3) {
+//
+//            result = "Wednesday";
+//
+//        } else if (num == 4) {
+//
+//            result = "Tuesday";
+//
+//        } else if (num == 5) {
+//
+//            result = "Friday";
+//
+//        } else if (num == 6) {
+//
+//            result = "Saturday";
+//
+//        } else if (num == 7) {
+//
+//            result = "Sunday";
+//
+//        } else {
+//
+//
+//            result = "this is not a expected input";
+//
+//        }
+//
+//        return result;
+//
+//
+//    }
 
 
 }
